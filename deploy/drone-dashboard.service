@@ -1,0 +1,18 @@
+[Unit]
+Description=drone-dashboard (read-only ground station)
+Wants=drone-telemetry.service
+
+[Service]
+User=drone
+Group=drone
+SupplementaryGroups=systemd-journal video
+ExecStart=/usr/bin/python3 /home/drone/drone-dashboard/drone_dashboard.py --host 0.0.0.0 --port 8080
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
