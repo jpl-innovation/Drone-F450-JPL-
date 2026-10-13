@@ -1,0 +1,20 @@
+[Unit]
+Description=drone-telemetry-cpp (MSP over USB)
+
+[Service]
+User=drone
+Group=dialout
+WorkingDirectory=/home/drone/drone-telemetry-cpp
+# Replace YOUR_FC_NAME with the name from: ls /dev/serial/by-id/
+ExecStart=/home/drone/drone-telemetry-cpp/build/drone_telemetry /dev/serial/by-id/YOUR_FC_NAME 115200 5
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+# false: the reader sends its readings to the dashboard on 127.0.0.1
+PrivateNetwork=false
+
+[Install]
+WantedBy=multi-user.target
