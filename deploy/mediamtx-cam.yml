@@ -1,0 +1,21 @@
+# MediaMTX v1.21.1 settings used on the Pi (file: /usr/local/etc/mediamtx.yml).
+# This is the part we changed from the stock config, not the whole file.
+# Camera: Raspberry Pi Camera Module 3 (imx708), 1280x720 at 60 fps, ~4 Mbit/s.
+
+# Top level (stock file has these keys already; set them like this):
+hls: true
+hlsAddress: 127.0.0.1:8888      # only Tailscale Funnel (port 8443) reaches it
+
+# Replace the example under "paths:" with:
+paths:
+  cam:
+    source: rpiCamera
+    sourceOnDemand: yes         # camera only runs while someone is watching
+    rpiCameraWidth: 1280
+    rpiCameraHeight: 720
+    rpiCameraFPS: 60
+    rpiCameraCodec: hardwareH264
+    rpiCameraBitrate: 4000000
+    rpiCameraIDRPeriod: 60
+    rpiCameraAfMode: continuous
+    rpiCameraFlickerPeriod: 10000   # 50 Hz mains (Vietnam)

@@ -67,3 +67,16 @@ F450 frame, MicoAir743 V2 flight controller (INAV 9.1.0) with the MicoAir IO boa
 ## Status
 
 Work in progress. Bench-tested on the real FC and a simulated one. Not flown yet.
+
+
+## Repository layout
+
+| Path | What it is |
+|---|---|
+| `src/main.cpp`, `CMakeLists.txt` | MSP telemetry reader (v2) |
+| `dashboard/` | Read-only web dashboard (`drone_dashboard.py` is the built single file; sources in `dashboard/src/`) |
+| `deploy/drone-*.service` | systemd units for reader and dashboard |
+| `deploy/mediamtx-cam.yml` | MediaMTX camera and HLS settings (Camera Module 3, 720p60) |
+| `deploy/fcbridge.sh` | Pi side of the wireless Configurator bridge |
+| `docs/f450-build.html` | The full build guide (open in a browser) |
+| `docs/laptop-configurator.md`, `docs/inav-settings.md` | Configurator over Tailscale; INAV settings |
